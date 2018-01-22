@@ -98,8 +98,8 @@ int main() {
             double shift_x = ptsx[i] - px;
             double shift_y = ptsy[i] - py;
 
-            ptsx[i] = (shift_x * cos(0-psi) - shitf_y * sin(0-psi));
-            ptsy[i] = (shift_y * sin(0-psi) - shitf_x * cos(0-psi));
+            ptsx[i] = (shift_x * cos(0-psi) - shift_y * sin(0-psi));
+            ptsy[i] = (shift_y * sin(0-psi) - shift_x * cos(0-psi));
           }
 
           double* ptrx = &ptsx[0];
@@ -121,7 +121,7 @@ int main() {
           Eigen::VectorXd state(6);
           state << 0, 0, 0, v, cte, epsi;
 
-          auto vars = mps.Solve(state, coeffs);
+          auto vars = mpc.Solve(state, coeffs);
 
           /*
           * TODO: Calculate steering angle and throttle using MPC.
