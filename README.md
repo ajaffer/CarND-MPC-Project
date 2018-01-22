@@ -8,7 +8,7 @@ My code is calculating tracking points in order to steer the udacity simulated c
 ---
 ## The Model
 Used the following constraints based on the following vehicle model:
-[Vehicle Model](Model.png)
+![Vehicle Model](Model.png)
 
 ## Polynomial Fitting and MPC Preprocessing
 Moved and rotated the vehicle points, to align with the regular x-y coordinates, in order to make it easier to understand.
