@@ -136,6 +136,7 @@ int main() {
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
           double Lf = 2.67;
+
           msgJson["steering_angle"] = vars[0]/(deg2rad(25)*Lf);
           msgJson["throttle"] = vars[1];
 
@@ -145,8 +146,8 @@ int main() {
 
           //.. add (x,y) points to list here, points are in reference to the vehicle's coordinate system
           // the points in the simulator are connected by a Green line
-          for (int i=0; i < vars.size(); i++) {
-            if (i % 2 == 0) {
+          for (int i = 2 ; i < vars.size(); i++) {
+            if (i%2 == 0) {
               mpc_x_vals.push_back(vars[i]);
             } else {
               mpc_y_vals.push_back(vars[i]);
@@ -162,8 +163,8 @@ int main() {
 
           //.. add (x,y) points to list here, points are in reference to the vehicle's coordinate system
           // the points in the simulator are connected by a Yellow line
-          double incr = 2.5; //dt?
-          double num_points = 25; //N?
+          double incr = 2.5; 
+          double num_points = 25; 
           for (int i = 0; i < num_points; i++) {
             next_x_vals.push_back(incr * i);
             next_y_vals.push_back(polyeval(coeffs, incr * i));
