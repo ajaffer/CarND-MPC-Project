@@ -154,14 +154,13 @@ int main() {
 
 
 
+
           px = px + v * cos(psi) * latency;
           py = py + v * sin(psi) * latency;
-          psi = psi - (v * steering_angle * latency / Lf );
-          
+          psi = psi - (v * steering_angle * latency / Lf );          
           
           cte = cte + v * sin(epsi) * latency;
-          epsi = epsi - ( v * atan(coeffs[1]) * latency / Lf );
-          //epsi = epsi + v * delta * latency / Lf;
+          epsi = epsi - ( v * steering_angle * latency / Lf ); 
           v = v + throttle * latency;
 
           // Define the state vector.
