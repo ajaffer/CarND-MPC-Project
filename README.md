@@ -7,8 +7,20 @@ My code is calculating tracking points in order to steer the udacity simulated c
 
 ---
 ## The Model
-Used the following constraints based on the following vehicle model:
+Used the following kinematic vehicle model:
 ![Vehicle Model](Model.png)
+
+here
+x = position of the car along x-axis
+y = position of the car along y-axis
+v = velocity of the car
+psi = direction of the car
+delta = steering direction
+dt = latency or elapsed time
+a = acceleration / deceleration throttle
+epsi = error in orientation
+cte = cross track error
+
 
 ## Polynomial Fitting and MPC Preprocessing
 Moved and rotated the vehicle points, in order to convert from the vehcile coordinate system into the global coordinate system, which is more understandable in practice.
@@ -30,3 +42,6 @@ They are coded [here](main.cpp#L133)
 
 ## Simulation
 I am able to get very good results, I am able to go around the track without the car leaving the drivable portion of the track surface.
+
+![turning](turning-01.png)
+![turning](turning-02.png)
