@@ -11,17 +11,22 @@ Used the following constraints based on the following vehicle model:
 ![Vehicle Model](Model.png)
 
 ## Polynomial Fitting and MPC Preprocessing
-Moved and rotated the vehicle points, to align with the regular x-y coordinates, in order to make it easier to understand.
+Moved and rotated the vehicle points, in order to convert from the vehcile coordinate system into the global coordinate system, which is more understandable in practice.
 
 ## Timestep Length and Elapsed Duration (N & dt)
 I chose N (timestep length) = 10 and and dt (elapsed duration between timesteps) as 0.1, in order to get 10 values totalling a one second.
 
-## Model Predictive Control with Latency
-Implemented a Model Predictive Control handling a 100 millisecond latency.
+1) a smaller dt gives finer resolution, in order to make fine-tuned decisions.
+2) a larger N, will be computationally more expensive, taking longer to finish, which can cause the car to crash.
 
-As was sugessted in one of the lectures by udacity TAs, the way to handle latency is to delay initializing the delta and acceleration constraints by one time period, i.e.
-      `AD<double> delta0 = vars[delta_start + t - 2];
-      AD<double> a0 = vars[a_start + t - 2];`
+
+## Model Predictive Control with Latency
+
+MPC is works well as it is when there is no latency. But in this project we are introducing a latency of 100ms. If we do not model this latency in MPC we will we sending actuation commands that are 100ms too late. In order to circumvent this latency, we will use kinematic equations to predict where the car will be in 100ms and what actuator values we should request the car to take.
+
+
+
+They are coded [here](main.cpp#L133)
 
 ## Simulation
-I am unable to install the Ipopt libraries on my mac, but will look for an alternate machine and re-run it soon.
+I am able to get very good results, I am able to go around the track without the car leaving the drivable portion of the track surface.
