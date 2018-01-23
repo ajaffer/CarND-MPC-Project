@@ -132,29 +132,6 @@ int main() {
 
           // After Latency
           
-/*
-          // change of sign because turning left is negative sign in simulator, but has a postive yaw in global coordinate system
-          double delta = -steering_angle;
-          
-      //convert miles per hour to meters per second
-          v *= 0.44704;
-          psi = delta;
-
-          px = px + v * cos(psi) * latency;
-          py = py + v * sin(psi) * latency;
-          cte = cte + v * sin(epsi) * latency;
-          epsi = epsi + v * delta * latency/Lf;
-          psi = psi + v * delta * latency/Lf;
-          v = v + throttle * latency;
-          
-          // Define the state vector.
-          Eigen::VectorXd state(6);
-          state << px, py, psi, v, cte, epsi;
-*/          
-
-
-
-
           px = px + v * cos(psi) * latency;
           py = py + v * sin(psi) * latency;
           psi = psi - (v * steering_angle * latency / Lf );          
