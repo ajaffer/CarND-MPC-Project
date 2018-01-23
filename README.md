@@ -8,10 +8,8 @@ My code is calculating tracking points in order to steer the udacity simulated c
 ---
 ## The Model
 Used the following kinematic vehicle model:
-![Vehicle Model](Model.png)
 
-here
-x = position of the car along x-axis
+`x = position of the car along x-axis
 y = position of the car along y-axis
 v = velocity of the car
 psi = direction of the car
@@ -19,8 +17,9 @@ delta = steering direction
 dt = latency or elapsed time
 a = acceleration / deceleration throttle
 epsi = error in orientation
-cte = cross track error
+cte = cross track error`
 
+![Vehicle Model](Model.png)
 
 ## Polynomial Fitting and MPC Preprocessing
 Moved and rotated the vehicle points, in order to convert from the vehcile coordinate system into the global coordinate system, which is more understandable in practice.
